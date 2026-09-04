@@ -1,15 +1,13 @@
-# Software Requirements Specification (SRS)
+# QueueNow Clinic MVP
 
-## QueueNow Clinic Management System
+## Software Requirements Specification (SRS)
 
-**Project Name:** QueueNow Clinic
-**Document Type:** Software Requirements Specification (SRS)
+**Project Name:** QueueNow
+**Document:** Software Requirements Specification
 **Version:** 1.0
-**Project Scope:** Minimum Viable Product (MVP)
-**Platform:** Web Application
-**Development Duration:** 1 Week
-**Prepared By:** QueueNow Project Team
-**Date:** September 2026
+**Project Type:** Web Application
+**Scope:** Minimum Viable Product (MVP)
+**MVP Deadline:** 1 Week
 
 ---
 
@@ -17,885 +15,819 @@
 
 ## 1.1 Purpose
 
-يهدف هذا المستند إلى تحديد المتطلبات الوظيفية وغير الوظيفية لنظام **QueueNow Clinic Management System**.
+يهدف **QueueNow** إلى تنظيم وإدارة الطوابير وأدوار الانتظار في العيادات والمواقع التي تعتمد على نظام الدور.
 
-QueueNow هو نظام ويب لإدارة العمليات الأساسية داخل العيادة الطبية، ويهدف إلى تنظيم المواعيد والطوابير وإدارة بيانات المرضى والزيارات الطبية، مع توفير لوحات تحكم مناسبة لكل نوع من المستخدمين.
+يركز النظام في نسخته الأولى على حل مشكلة الانتظار التقليدي، حيث يحصل المراجع على Ticket برقم دوره، ثم يستطيع متابعة حالة دوره ومعرفة عدد الأشخاص الموجودين قبله دون الحاجة إلى الوقوف بشكل مستمر في الطابور.
 
-يمثل هذا المستند المرجع الأساسي لفريق المشروع أثناء مراحل التصميم والتطوير والاختبار.
+في المقابل، يحصل الموظف على Dashboard تمكنه من إدارة الطابور وتحديث حالة الـTickets أثناء تقديم الخدمة.
 
 ---
 
 ## 1.2 Product Vision
 
-يسعى QueueNow إلى توفير طريقة رقمية بسيطة وفعالة لإدارة رحلة المريض داخل العيادة، بدءًا من حجز الموعد وحتى انتهاء الزيارة الطبية.
+يوفر QueueNow تجربة بسيطة للمراجع والموظف:
 
-النظام المقترح:
+```text
+Customer / Visitor
+        ↓
+     Take Ticket
+        ↓
+   Receive Number
+        ↓
+   Track Queue
+        ↓
+      Called
+        ↓
+     Serving
+        ↓
+       Done
+```
 
-**Patient → Appointment → Check-In → Queue → Doctor Consultation → Medical Visit → Completion**
+ويستطيع الموظف إدارة الطابور من خلال:
+
+```text
+Queue Dashboard
+      ↓
+    Next
+      ↓
+    Start
+      ↓
+     Done
+```
+
+مع إمكانية استخدام:
+
+```text
+Skip
+Cancel
+```
+
+عند الحاجة.
 
 ---
 
-## 1.3 Scope
+# 2. Scope
 
-يشمل الإصدار الأول من النظام الوظائف الأساسية التالية:
+## 2.1 In Scope
 
-* Authentication and Authorization.
-* Patient Management.
-* Doctor Management.
-* Appointment Management.
-* Queue Management.
-* Medical Visit Management.
-* Prescription Management.
-* Basic Notifications.
-* Basic Dashboard and Reports.
-* Limited AI-assisted features.
+يشمل MVP الوظائف التالية:
 
-الإصدار الأول مخصص لعيادة واحدة، ويهدف إلى تقديم MVP يعمل بشكل متكامل وقابل للتوسع مستقبلًا.
+* إنشاء Ticket.
+* إعطاء Ticket Number للمراجع.
+* عرض حالة الـTicket.
+* عرض عدد الأشخاص الموجودين قبله.
+* عرض قائمة الانتظار للموظف.
+* الانتقال إلى Ticket التالية.
+* بدء خدمة Ticket.
+* إنهاء Ticket.
+* تخطي Ticket.
+* إلغاء Ticket.
+* حفظ جميع Tickets في قاعدة البيانات.
+* الاحتفاظ بسجل Tickets وعدم حذفها.
+* عدم إعادة استخدام رقم Ticket ضمن نفس اليوم ونفس الخدمة.
+* حساب وعرض Estimated Waiting Time.
+* ربط Frontend مع Backend وقاعدة البيانات في نظام واحد يعمل بشكل كامل.
+* إدارة المشروع بالكامل عبر GitHub.
 
 ---
 
-## 1.4 Out of Scope
+## 2.2 Out of Scope
 
-لن تشمل النسخة الأولى:
+لن تشمل نسخة MVP الحالية:
 
-* تطبيق Mobile مستقل.
-* إدارة عدة فروع للعيادة.
-* التكامل مع شركات التأمين.
-* التكامل مع المختبرات والصيدليات.
-* بوابات دفع إلكترونية.
-* رسائل SMS أو WhatsApp.
-* الاستشارات الطبية عبر الفيديو.
-* نظام سجلات طبية متقدم بالكامل.
-* التشخيص الطبي الآلي.
-* وصف الأدوية تلقائيًا بواسطة AI.
-* تدريب نماذج ذكاء اصطناعي متقدمة من الصفر.
+* Medical Records.
+* Patient Medical History.
+* Prescriptions.
+* Billing.
+* Insurance.
+* Pharmacy Integration.
+* Laboratory Integration.
+* Online Payments.
+* Mobile Application.
+* SMS / WhatsApp Integration.
+* Complex Admin Panel.
+* Multi-branch Management.
+* AI Diagnosis.
+* AI Medical Recommendations.
+* أي وظائف لا ترتبط مباشرة بإدارة الطوابير والانتظار.
 
 يمكن إضافة هذه الوظائف في إصدارات مستقبلية.
 
 ---
 
-# 2. Problem Statement
+# 3. Stakeholders
 
-تعتمد بعض العيادات على أساليب يدوية أو أنظمة غير مترابطة لإدارة المرضى والمواعيد والطوابير، مما قد يؤدي إلى:
+## 3.1 Customer / Visitor
 
-* ازدحام منطقة الانتظار.
-* صعوبة متابعة المواعيد.
-* زيادة وقت الانتظار.
-* صعوبة الوصول إلى بيانات المريض.
-* تكرار إدخال البيانات.
-* صعوبة متابعة حالة الزيارة.
-* ضعف القدرة على استخراج التقارير.
+الشخص الذي يزور العيادة ويحصل على Ticket وينتظر دوره.
 
-يهدف QueueNow إلى توفير نظام مركزي يساعد على تنظيم هذه العمليات وتحسين تجربة المريض والموظفين.
+## 3.2 Employee
 
----
+الموظف المسؤول عن إدارة الطابور وتقديم الخدمة للمراجعين.
 
-# 3. Objectives
+## 3.3 Manager / Admin
 
-## 3.1 Primary Objectives
-
-1. رقمنة العمليات الأساسية في العيادة.
-2. تنظيم حجز وإدارة المواعيد.
-3. إدارة الطوابير إلكترونيًا.
-4. تحسين تجربة المريض.
-5. توفير وصول منظم إلى المعلومات الطبية.
-6. مساعدة الطبيب في إدارة الزيارات.
-7. توفير لوحة تحكم للإدارة.
-8. توفير بيانات يمكن استخدامها في التحليلات.
-9. تجربة استخدام بعض تقنيات AI بشكل آمن ومحدود.
+دور محتمل في المستقبل، وليس جزءًا أساسيًا من MVP الحالي.
 
 ---
 
-# 4. Stakeholders
+# 4. User Roles
 
-## 4.1 Patients
+الإصدار الحالي يعتمد على مستخدمين رئيسيين:
 
-الأشخاص الذين يزورون العيادة ويستخدمون النظام لحجز المواعيد ومتابعة الزيارة.
+### Customer / Visitor
 
-## 4.2 Doctors
+* أخذ Ticket.
+* مشاهدة رقم الدور.
+* مشاهدة حالة Ticket.
+* مشاهدة عدد الأشخاص قبله.
+* مشاهدة Estimated Waiting Time.
 
-الأطباء الذين يقومون بفحص المرضى وإدخال معلومات الزيارة والوصفات الطبية.
+### Employee
 
-## 4.3 Receptionists
+* مشاهدة Queue Dashboard.
+* مشاهدة Tickets.
+* تنفيذ Next.
+* تنفيذ Start.
+* تنفيذ Done.
+* تنفيذ Skip.
+* تنفيذ Cancel.
 
-موظفو الاستقبال المسؤولون عن المواعيد وتسجيل وصول المرضى وإدارة الطابور.
+### Future Role
 
-## 4.4 Administrators
+**Manager / Admin**
 
-المستخدمون المسؤولون عن إدارة النظام والمستخدمين والأطباء والخدمات والتقارير.
-
-## 4.5 Clinic Management
-
-إدارة العيادة التي تستفيد من البيانات والإحصائيات لمتابعة أداء العيادة.
-
----
-
-# 5. User Roles
-
-يحتوي النظام على أربعة أدوار رئيسية:
-
-| Role         | Description                                   |
-| ------------ | --------------------------------------------- |
-| Patient      | مستخدم يحجز المواعيد ويتابع حالته             |
-| Receptionist | يدير المرضى والمواعيد والطابور                |
-| Doctor       | يدير الزيارات والسجلات والوصفات               |
-| Admin        | يدير المستخدمين والأطباء والإعدادات والتقارير |
-
-يجب أن يكون الوصول إلى الوظائف مبنيًا على صلاحيات الدور.
+سيتم تصميم النظام بحيث يمكن إضافة هذا الدور مستقبلًا دون إعادة بناء النظام بالكامل.
 
 ---
 
-# 6. System Overview
+# 5. Core Concept — Ticket
 
-النظام عبارة عن Web Application يتكون من:
+الـTicket هي الوحدة الأساسية في QueueNow.
 
-1. Frontend Application.
-2. Backend REST API.
-3. Relational Database.
-4. AI Service.
-5. Authentication and Authorization Layer.
+كل Ticket تمثل طلب خدمة/دور لمراجع معين.
 
-Architecture مبدئية:
+تحتوي Ticket مبدئيًا على بيانات مثل:
 
-```text
-Users
-  |
-  v
-React Frontend
-  |
-  v
-Node.js / Express API
-  |
-  +----------------------+
-  |                      |
-  v                      v
-PostgreSQL           AI Service
-Database             Python/API
-```
+* Ticket ID.
+* Ticket Number.
+* Service.
+* Creation Date.
+* Creation Time.
+* Status.
+* Timestamp information.
+* Estimated Waiting Time عند الحاجة.
 
 ---
 
-# 7. Functional Requirements
+# 6. Ticket Status
 
-## 7.1 Authentication
-
-### FR-AUTH-01
-
-يجب أن يسمح النظام للمستخدم بتسجيل الدخول باستخدام بيانات الاعتماد الخاصة به.
-
-### FR-AUTH-02
-
-يجب أن يسمح النظام للمستخدمين المسموح لهم بإنشاء حساب.
-
-### FR-AUTH-03
-
-يجب أن يسمح النظام بتسجيل الخروج.
-
-### FR-AUTH-04
-
-يجب أن يدعم النظام تغيير كلمة المرور.
-
-### FR-AUTH-05
-
-يجب أن يتحقق النظام من صحة بيانات الدخول.
-
-### FR-AUTH-06
-
-يجب أن يمنع النظام المستخدم من الوصول إلى موارد غير مسموحة لدوره.
-
----
-
-# 8. Patient Management
-
-### FR-PAT-01
-
-يجب أن يستطيع المستخدم إنشاء ملف Patient.
-
-### FR-PAT-02
-
-يجب أن يستطيع المريض تحديث بياناته الشخصية الأساسية.
-
-### FR-PAT-03
-
-يجب أن يستطيع Receptionist البحث عن المرضى.
-
-### FR-PAT-04
-
-يجب أن يستطيع Receptionist عرض المعلومات الأساسية للمريض.
-
-### FR-PAT-05
-
-يجب أن يكون لكل Patient سجل تعريف فريد.
-
----
-
-# 9. Doctor Management
-
-### FR-DOC-01
-
-يجب أن يستطيع Admin إضافة طبيب.
-
-### FR-DOC-02
-
-يجب أن يستطيع Admin تعديل بيانات الطبيب.
-
-### FR-DOC-03
-
-يجب أن يستطيع Admin تفعيل أو تعطيل حساب الطبيب.
-
-### FR-DOC-04
-
-يجب ربط الطبيب بتخصص.
-
-### FR-DOC-05
-
-يجب أن يمتلك الطبيب جدول دوام أو فترات متاحة للمواعيد.
-
----
-
-# 10. Appointment Management
-
-### FR-APP-01
-
-يجب أن يستطيع Patient مشاهدة الأطباء المتاحين.
-
-### FR-APP-02
-
-يجب أن يستطيع Patient اختيار الطبيب.
-
-### FR-APP-03
-
-يجب أن يستطيع Patient اختيار تاريخ ووقت متاح.
-
-### FR-APP-04
-
-يجب على النظام التحقق من عدم وجود تعارض في المواعيد.
-
-### FR-APP-05
-
-يجب أن يستطيع Patient إنشاء موعد.
-
-### FR-APP-06
-
-يجب أن يستطيع Patient مشاهدة مواعيده.
-
-### FR-APP-07
-
-يجب أن يستطيع Patient إلغاء موعد وفق القواعد المحددة.
-
-### FR-APP-08
-
-يجب أن يستطيع Receptionist تأكيد الموعد أو إدارته.
-
-### FR-APP-09
-
-يجب أن يستطيع Receptionist إعادة جدولة الموعد عند الحاجة.
-
-### FR-APP-10
-
-يجب أن يدعم النظام حالات الموعد التالية:
-
-```text
-Pending
-Confirmed
-Checked-In
-In Consultation
-Completed
-Cancelled
-No-Show
-```
-
----
-
-# 11. Queue Management
-
-## 11.1 Purpose
-
-إدارة الطابور هي الوظيفة الأساسية التي تميز QueueNow.
-
-### FR-QUEUE-01
-
-يجب أن يستطيع Receptionist تسجيل وصول المريض.
-
-### FR-QUEUE-02
-
-عند تسجيل الوصول يجب إنشاء Queue Entry للمريض.
-
-### FR-QUEUE-03
-
-يجب أن يحصل المريض على Queue Number.
-
-### FR-QUEUE-04
-
-يجب أن يستطيع المريض مشاهدة رقم طابوره.
-
-### FR-QUEUE-05
-
-يجب أن يستطيع المريض معرفة عدد المرضى قبله.
-
-### FR-QUEUE-06
-
-يجب أن يستطيع Receptionist استدعاء المريض التالي.
-
-### FR-QUEUE-07
-
-يجب أن يستطيع Receptionist تحديث حالة الطابور.
-
-### FR-QUEUE-08
-
-يجب أن يدعم النظام الحالات:
+يجب أن يدعم النظام الحالات التالية:
 
 ```text
 Waiting
 Called
-In Consultation
-Completed
+Serving
+Done
 Skipped
+Cancelled
 ```
 
-### FR-QUEUE-09
+## Waiting
 
-يجب أن يعرض النظام المريض الذي تتم خدمته حاليًا.
+تم إنشاء Ticket والمراجع ينتظر دوره.
 
----
+## Called
 
-# 12. Medical Visit Management
+تم استدعاء Ticket من قبل الموظف.
 
-### FR-VISIT-01
+## Serving
 
-يجب أن يستطيع Doctor فتح ملف المريض المخصص للزيارة.
+بدأ الموظف بتقديم الخدمة للمراجع.
 
-### FR-VISIT-02
+## Done
 
-يجب أن يستطيع Doctor تسجيل سبب الزيارة.
+انتهت الخدمة بنجاح.
 
-### FR-VISIT-03
+## Skipped
 
-يجب أن يستطيع Doctor تسجيل الأعراض.
+تم تجاوز Ticket ولم تتم خدمتها في ذلك الوقت.
 
-### FR-VISIT-04
+## Cancelled
 
-يجب أن يستطيع Doctor إدخال الملاحظات الطبية.
-
-### FR-VISIT-05
-
-يجب أن يستطيع Doctor تسجيل التشخيص.
-
-### FR-VISIT-06
-
-يجب أن يستطيع Doctor تسجيل خطة العلاج.
-
-### FR-VISIT-07
-
-يجب أن يستطيع Doctor إنهاء الزيارة.
-
-### FR-VISIT-08
-
-يجب حفظ تاريخ الزيارة في سجل المريض.
+تم إلغاء Ticket.
 
 ---
 
-# 13. Prescription Management
+# 7. Ticket Lifecycle
 
-### FR-PRES-01
+المسار الطبيعي للـTicket:
 
-يجب أن يستطيع Doctor إنشاء وصفة للمريض.
+```text
+Waiting
+   ↓
+Called
+   ↓
+Serving
+   ↓
+Done
+```
 
-### FR-PRES-02
+مسارات بديلة:
 
-يجب أن يستطيع Doctor إضافة دواء إلى الوصفة.
+```text
+Waiting → Skipped
+Waiting → Cancelled
 
-### FR-PRES-03
+Called → Skipped
+Called → Cancelled
+```
 
-يجب أن يتضمن عنصر الوصفة على الأقل:
-
-* Medication Name.
-* Dosage.
-* Frequency.
-* Duration.
-* Instructions.
-
-### FR-PRES-04
-
-يجب أن ترتبط الوصفة بالزيارة الطبية.
-
-### FR-PRES-05
-
-يجب أن يستطيع Patient مشاهدة الوصفات المسموح له بالوصول إليها.
+ويجب على النظام منع الانتقالات غير المنطقية بين الحالات.
 
 ---
 
-# 14. Notification Management
+# 8. Ticket Number Rules
 
-### FR-NOT-01
+هذه نقطة أساسية في QueueNow.
 
-يجب أن يستطيع النظام إنشاء إشعارات داخل التطبيق.
+## 8.1 Ticket Persistence
 
-### FR-NOT-02
+لا يجب حذف الـTicket من قاعدة البيانات بعد انتهاء استخدامها.
 
-يجب إرسال إشعار عند تأكيد الموعد.
+يجب الاحتفاظ بها مع حالتها النهائية.
 
-### FR-NOT-03
+مثال:
 
-يجب إرسال إشعار عند إلغاء الموعد.
+```text
+Ticket #12
+Status: Done
+```
 
-### FR-NOT-04
-
-يجب إرسال إشعار عند اقتراب دور المريض.
-
-### FR-NOT-05
-
-يجب إرسال إشعار عند استدعاء المريض.
+تبقى في قاعدة البيانات.
 
 ---
 
-# 15. Admin Management
+## 8.2 Number Reuse
 
-### FR-ADM-01
+لا يجوز إعادة استخدام Ticket Number في:
 
-يجب أن يمتلك Admin لوحة تحكم.
+* نفس اليوم
+* ونفس الخدمة
 
-### FR-ADM-02
+حتى لو كانت الـTicket السابقة:
 
-يجب أن يستطيع Admin مشاهدة المستخدمين.
+```text
+Done
+Skipped
+Cancelled
+```
 
-### FR-ADM-03
+مثال:
 
-يجب أن يستطيع Admin إدارة الأطباء.
+إذا كان آخر رقم مستخدم لخدمة معينة اليوم:
 
-### FR-ADM-04
+```text
+15
+```
 
-يجب أن يستطيع Admin إدارة التخصصات.
+فإن Ticket التالية يجب أن تكون:
 
-### FR-ADM-05
+```text
+16
+```
 
-يجب أن يستطيع Admin إدارة الخدمات الطبية.
+وليس:
 
-### FR-ADM-06
+```text
+1
+```
 
-يجب أن يستطيع Admin تفعيل أو تعطيل المستخدمين عند الحاجة.
-
----
-
-# 16. Dashboard and Reports
-
-### FR-REP-01
-
-يجب أن يعرض النظام عدد المرضى.
-
-### FR-REP-02
-
-يجب أن يعرض النظام عدد المواعيد.
-
-### FR-REP-03
-
-يجب أن يعرض النظام عدد الزيارات المكتملة.
-
-### FR-REP-04
-
-يجب أن يعرض النظام عدد المواعيد الملغاة.
-
-### FR-REP-05
-
-يجب أن يعرض النظام متوسط وقت الانتظار.
-
-### FR-REP-06
-
-يجب أن يعرض النظام أوقات الازدحام الأساسية عند توفر البيانات.
+حتى لو كانت جميع Tickets السابقة منتهية.
 
 ---
 
-# 17. AI Requirements
+## 8.3 Daily Numbering
 
-AI في QueueNow هو نظام مساعد وليس بديلًا عن الطبيب.
+يمكن أن تبدأ أرقام Tickets من جديد في يوم جديد، مع بقاء Tickets القديمة محفوظة في قاعدة البيانات.
 
-## FR-AI-01 — Waiting Time Prediction
+مثال:
 
-يجب أن يحاول النظام تقدير وقت انتظار المريض اعتمادًا على بيانات مثل:
+```text
+2026-09-04 → 1, 2, 3, ... 25
+2026-09-05 → 1, 2, 3, ... 
+```
 
-* عدد المرضى قبله.
-* متوسط مدة الزيارة.
-* حالة الطبيب.
-* وقت اليوم.
+ويجب أن يكون الترقيم مرتبطًا أيضًا بالخدمة.
 
-Output Example:
+---
+
+# 9. Services
+
+يدعم QueueNow مفهوم **Service** لأن العيادة قد تحتوي على أكثر من نوع خدمة.
+
+مثال:
+
+```text
+General Consultation
+Dental
+Laboratory
+Registration
+```
+
+يجب أن تكون Ticket مرتبطة بالخدمة التي اختارها المراجع.
+
+كما أن قواعد أرقام الـTickets تكون مستقلة لكل خدمة.
+
+مثال:
+
+```text
+General Consultation → Ticket 15
+Dental               → Ticket 8
+```
+
+---
+
+# 10. Functional Requirements
+
+## FR-01 — Create Ticket
+
+يجب أن يستطيع المراجع إنشاء Ticket للخدمة المطلوبة.
+
+عند إنشاء Ticket:
+
+1. يحدد النظام الخدمة.
+2. يحدد الرقم التالي المتاح.
+3. ينشئ Ticket جديدة.
+4. يخزنها في قاعدة البيانات.
+5. يعرض رقم الدور للمراجع.
+
+---
+
+## FR-02 — View Ticket Status
+
+يجب أن يستطيع المراجع معرفة:
+
+* Ticket Number.
+* Current Status.
+* Service.
+* عدد الأشخاص الموجودين قبله.
+* Estimated Waiting Time.
+
+---
+
+## FR-03 — Queue Position
+
+يجب أن يحسب النظام عدد Tickets التي:
+
+* تنتمي إلى نفس الخدمة.
+* حالتها الحالية ما زالت ضمن الانتظار.
+* وتأتي قبل Ticket الخاصة بالمراجع.
+
+---
+
+## FR-04 — Employee Dashboard
+
+يجب أن يمتلك الموظف Dashboard تعرض:
+
+* Queue الحالية.
+* Ticket Number.
+* Service.
+* Status.
+* Creation Time.
+* Current Ticket.
+* Next Ticket.
+
+---
+
+## FR-05 — Next
+
+يجب أن يسمح النظام للموظف بالانتقال إلى Ticket التالية المناسبة.
+
+يتم اختيار Ticket وفق ترتيب الطابور.
+
+---
+
+## FR-06 — Start
+
+عند ضغط الموظف على **Start**:
+
+```text
+Called → Serving
+```
+
+ويتم تسجيل وقت بدء الخدمة.
+
+---
+
+## FR-07 — Done
+
+عند ضغط الموظف على **Done**:
+
+```text
+Serving → Done
+```
+
+ويتم تسجيل وقت انتهاء الخدمة.
+
+---
+
+## FR-08 — Skip
+
+يجب أن يستطيع الموظف تجاوز Ticket.
+
+مثال:
+
+```text
+Waiting → Skipped
+```
+
+أو بحسب حالة النظام الحالية.
+
+ويجب الاحتفاظ بالـTicket في قاعدة البيانات.
+
+---
+
+## FR-09 — Cancel
+
+يجب أن يستطيع الموظف إلغاء Ticket عند الحاجة.
+
+مثال:
+
+```text
+Waiting → Cancelled
+```
+
+ويجب الاحتفاظ بالـTicket في قاعدة البيانات.
+
+---
+
+## FR-10 — Ticket History
+
+يجب ألا تُحذف Tickets.
+
+يجب أن يحتفظ النظام بتاريخ Tickets بما في ذلك:
+
+* Ticket Number.
+* Service.
+* Status.
+* Created At.
+* Called At.
+* Started At.
+* Completed At عند توفره.
+
+---
+
+# 11. Estimated Waiting Time
+
+يعد Estimated Waiting Time إحدى أهم ميزات QueueNow.
+
+## FR-AI-01
+
+يجب أن يوفر النظام تقديرًا تقريبيًا لمدة انتظار المراجع.
+
+مثال:
+
+```text
+Estimated Waiting Time:
+15 minutes
+```
+
+---
+
+## FR-AI-02 — Regression Model
+
+سيتم تنفيذ ميزة Estimated Waiting Time باستخدام **Regression Model**.
+
+يعتمد النموذج على مجموعة Features يتم تحديدها من قبل فريق AI بعد دراسة البيانات المتاحة.
+
+أمثلة محتملة:
+
+* Number of people ahead.
+* Average service duration.
+* Current queue size.
+* Time of day.
+* Day of week.
+* Service type.
+* Historical waiting time.
+
+**هذه الأمثلة ليست Features إلزامية**؛ يحدد فريق AI المجموعة النهائية حسب البيانات المتوفرة وجودتها.
+
+---
+
+## FR-AI-03
+
+يجب أن يعرض النظام النتيجة للمستخدم بطريقة بسيطة، مثل:
 
 ```text
 Estimated Waiting Time: 18 minutes
 ```
 
-## FR-AI-02 — Medical Visit Summarization
-
-يمكن للنظام إنشاء ملخص منظم لملاحظات الزيارة لمساعدة الطبيب.
-
-يجب ألا يعتبر الملخص بديلًا عن السجل الأصلي.
-
-## FR-AI-03 — Clinic Analytics
-
-يمكن للنظام تحليل بيانات المواعيد والطوابير وتقديم مؤشرات إدارية مثل:
-
-* Peak Hours.
-* Average Waiting Time.
-* Appointment Volume.
-* No-Show Rate.
-
-## FR-AI-04 — AI Assistant
-
-يمكن توفير مساعد داخلي يجيب عن الأسئلة المسموح بها والمتعلقة ببيانات النظام.
-
-## FR-AI-05 — AI Safety
-
-لا يجوز استخدام AI في النسخة الأولى من النظام لاتخاذ قرار تشخيصي أو علاجي مستقل أو إنشاء وصفة طبية تلقائية.
+ويجب توضيح أن القيمة **تقديرية** وليست وقتًا مضمونًا.
 
 ---
 
-# 18. Business Rules
+# 12. Data Requirements
 
-### BR-01
+يجب أن يحتفظ النظام بالبيانات الأساسية التالية على الأقل:
 
-لا يمكن حجز موعد لطبيب في فترة غير متاحة.
-
-### BR-02
-
-لا يسمح النظام بتعارض موعدين للطبيب في الوقت نفسه.
-
-### BR-03
-
-يجب أن يكون المريض مسجلًا قبل إنشاء موعد.
-
-### BR-04
-
-يمكن إدخال المريض إلى Queue بعد تسجيل وصوله.
-
-### BR-05
-
-لا يمكن للطبيب بدء زيارة لمريض غير مؤهل للدخول إلى عيادته حسب حالة الموعد والطابور.
-
-### BR-06
-
-لا يستطيع Patient تعديل السجل الطبي.
-
-### BR-07
-
-يستطيع Doctor تعديل السجل الطبي ضمن الصلاحيات المحددة.
-
-### BR-08
-
-يستطيع Admin إدارة الحسابات والصلاحيات.
-
-### BR-09
-
-يجب أن تنتقل حالة الزيارة إلى Completed بعد إنهاء الطبيب للزيارة.
-
-### BR-10
-
-كل عملية مهمة على البيانات الطبية يجب أن تكون قابلة للتتبع.
-
----
-
-# 19. Non-Functional Requirements
-
-## 19.1 Security
-
-### NFR-SEC-01
-
-يجب تخزين كلمات المرور باستخدام Password Hashing.
-
-### NFR-SEC-02
-
-يجب حماية API باستخدام Authentication.
-
-### NFR-SEC-03
-
-يجب تطبيق Role-Based Access Control.
-
-### NFR-SEC-04
-
-يجب التحقق من جميع المدخلات القادمة من المستخدم.
-
-### NFR-SEC-05
-
-يجب عدم تخزين الأسرار البرمجية داخل GitHub.
-
-### NFR-SEC-06
-
-يجب تسجيل العمليات الحساسة باستخدام Audit Logs.
-
----
-
-## 19.2 Performance
-
-### NFR-PER-01
-
-يجب أن تكون العمليات الأساسية مثل Login وBooking وQueue سريعة في بيئة التشغيل المستهدفة.
-
-### NFR-PER-02
-
-يجب تصميم استعلامات قاعدة البيانات بشكل يمنع الاستعلامات غير الضرورية.
-
----
-
-## 19.3 Usability
-
-### NFR-USE-01
-
-يجب أن تكون الواجهات بسيطة وواضحة.
-
-### NFR-USE-02
-
-يجب أن يكون النظام Responsive.
-
-### NFR-USE-03
-
-يجب أن تكون الوظائف الأساسية قابلة للوصول بأقل عدد ممكن من الخطوات.
-
----
-
-## 19.4 Reliability
-
-### NFR-REL-01
-
-يجب التعامل مع الأخطاء دون فقدان البيانات.
-
-### NFR-REL-02
-
-يجب أن يعرض النظام رسائل واضحة عند حدوث خطأ.
-
-### NFR-REL-03
-
-يجب حماية العمليات المهمة من التكرار غير المقصود.
-
----
-
-## 19.5 Maintainability
-
-### NFR-MNT-01
-
-يجب تقسيم النظام إلى Modules واضحة.
-
-### NFR-MNT-02
-
-يجب اتباع Coding Standards مشتركة.
-
-### NFR-MNT-03
-
-يجب استخدام Git وPull Requests لمراجعة التغييرات.
-
-### NFR-MNT-04
-
-يجب توثيق API والوظائف الأساسية.
-
----
-
-## 19.6 Scalability
-
-يجب أن يسمح التصميم بإضافة مستقبلية لـ:
-
-* Mobile Application.
-* Multiple Clinics.
-* Laboratory Integration.
-* Pharmacy Integration.
-* Online Payments.
-* Advanced AI.
-* Advanced Reporting.
-
----
-
-# 20. Data Requirements
-
-البيانات الأساسية المتوقعة في النظام:
+### Ticket
 
 ```text
-Users
-Patients
-Doctors
-Specialties
-Services
-Doctor Schedules
-Appointments
-Queue Entries
-Medical Visits
-Prescriptions
-Prescription Items
-Notifications
-Audit Logs
+id
+ticket_number
+service_id
+status
+created_at
+called_at
+started_at
+completed_at
 ```
 
-يجب أن تكون العلاقات بين البيانات واضحة ومتسقة، مع استخدام معرفات فريدة لكل سجل.
-
----
-
-# 21. Main System Workflows
-
-## 21.1 Appointment Workflow
+### Service
 
 ```text
-Patient Login
-    ↓
-Select Doctor
-    ↓
-Select Date
-    ↓
-Select Available Slot
-    ↓
-Confirm Appointment
-    ↓
-Appointment Created
+id
+name
+description
+active
 ```
 
-## 21.2 Queue Workflow
+ويمكن إضافة حقول أخرى حسب الحاجة أثناء System Design.
+
+---
+
+# 13. Non-Functional Requirements
+
+## NFR-01 — Usability
+
+يجب أن يكون النظام سهل الاستخدام وبأقل عدد ممكن من الخطوات.
+
+## NFR-02 — Performance
+
+يجب أن تكون العمليات الأساسية مثل:
+
+* Create Ticket
+* View Queue
+* Next
+* Start
+* Done
+
+سريعة في بيئة التشغيل المستهدفة.
+
+## NFR-03 — Reliability
+
+يجب ألا يؤدي تحديث حالة Ticket إلى فقدان البيانات.
+
+## NFR-04 — Data Persistence
+
+يجب تخزين Tickets بشكل دائم في قاعدة البيانات.
+
+## NFR-05 — Maintainability
+
+يجب أن يكون النظام منظمًا وقابلًا للتعديل والتطوير.
+
+## NFR-06 — Responsive Design
+
+يجب أن تعمل واجهة النظام على أحجام الشاشات المستهدفة.
+
+---
+
+# 14. Security Requirements
+
+ضمن نطاق MVP يجب تطبيق الحد الأدنى من الأمان:
+
+* التحقق من بيانات الإدخال.
+* حماية API.
+* منع الوصول إلى وظائف الموظف من المستخدم غير المصرح له.
+* عدم تخزين الأسرار داخل GitHub.
+* استخدام Environment Variables للإعدادات الحساسة.
+
+يمكن توسيع نظام Authentication وAuthorization في الإصدارات اللاحقة حسب الحاجة.
+
+---
+
+# 15. Technical Scope
+
+الإصدار الأول يجب أن يكون نظامًا متكاملًا وليس أجزاء منفصلة.
+
+يجب أن تعمل المنظومة بالشكل التالي:
 
 ```text
-Patient Arrives
+Frontend
     ↓
-Receptionist Check-In
+Backend API
     ↓
-Queue Number Assigned
+Database
     ↓
-Waiting
-    ↓
-Patient Called
-    ↓
-In Consultation
+AI Model
 ```
 
-## 21.3 Consultation Workflow
+ويجب أن تكون جميع المكونات متصلة وتعمل معًا.
+
+---
+
+# 16. Development Roles
+
+## Frontend Team
+
+مسؤول عن:
+
+* Customer Interface.
+* Ticket Interface.
+* Queue Status.
+* Employee Dashboard.
+* Frontend/Backend Integration.
+
+## Backend + Database Team
+
+مسؤول عن:
+
+* REST API.
+* Ticket Management.
+* Queue Logic.
+* Ticket Number Generation.
+* Status Transitions.
+* Database Design.
+* Database Integration.
+
+## UI/UX Team
+
+مسؤول عن:
+
+* User Flow.
+* Customer Interface Design.
+* Employee Dashboard Design.
+* Design System الأساسي.
+
+## AI Team
+
+مسؤول عن:
+
+* دراسة البيانات.
+* اختيار Features.
+* تجهيز البيانات.
+* بناء Regression Model.
+* تقييم النموذج.
+* توفير Prediction للـBackend.
+
+## QA + System Analysis
+
+مسؤول عن:
+
+* تحليل المتطلبات.
+* كتابة Test Cases.
+* اختبار Workflows.
+* اكتشاف المشاكل.
+* التحقق من مطابقة النظام للـSRS.
+
+## Project Management
+
+مسؤول عن:
+
+* التخطيط.
+* توزيع Tasks.
+* متابعة التقدم.
+* تنظيم GitHub.
+* متابعة الـDeadline.
+* التنسيق بين الفرق.
+* التأكد من Integration.
+* متابعة اكتمال الـMVP.
+
+---
+
+# 17. GitHub Collaboration Requirements
+
+جميع أعمال المشروع يجب أن تتم من خلال GitHub.
+
+## 17.1 Contributors
+
+يجب أن يكون أعضاء الفريق مشاركين في Repository كـContributors، وفق الصلاحيات التي يحددها مدير المشروع.
+
+## 17.2 Tasks
+
+يجب أن تكون لكل عضو Tasks واضحة.
+
+مثال:
 
 ```text
-Doctor Opens Queue
-    ↓
-Select Patient
-    ↓
-Review Patient Information
-    ↓
-Record Visit
-    ↓
-Create Prescription
-    ↓
-Complete Visit
+FE-01 Create Ticket Page
+BE-01 Create Ticket API
+DB-01 Ticket Schema
+AI-01 Prepare Training Dataset
+QA-01 Test Ticket Lifecycle
 ```
 
----
+## 17.3 Commits
 
-# 22. Main Use Cases
+يجب أن تكون الـCommits واضحة ومرتبطة بالعمل المنجز.
 
-| ID    | Use Case                | Actor                  |
-| ----- | ----------------------- | ---------------------- |
-| UC-01 | Register                | Patient                |
-| UC-02 | Login                   | All Users              |
-| UC-03 | Book Appointment        | Patient                |
-| UC-04 | Manage Appointment      | Patient / Receptionist |
-| UC-05 | Check-In Patient        | Receptionist           |
-| UC-06 | Manage Queue            | Receptionist           |
-| UC-07 | View Waiting Patients   | Doctor                 |
-| UC-08 | Perform Consultation    | Doctor                 |
-| UC-09 | Create Medical Visit    | Doctor                 |
-| UC-10 | Create Prescription     | Doctor                 |
-| UC-11 | Manage Users            | Admin                  |
-| UC-12 | Manage Doctors          | Admin                  |
-| UC-13 | View Reports            | Admin                  |
-| UC-14 | Predict Waiting Time    | System / AI            |
-| UC-15 | Summarize Medical Visit | Doctor / AI            |
-
----
-
-# 23. MVP Acceptance Criteria
-
-يعتبر الإصدار الأول ناجحًا إذا استطاع النظام تنفيذ السيناريو التالي بنجاح:
+أمثلة:
 
 ```text
-1. Patient creates account.
-2. Patient logs in.
-3. Patient selects doctor.
-4. Patient books available appointment.
-5. Receptionist sees appointment.
-6. Patient checks in.
-7. System assigns queue number.
-8. Receptionist calls patient.
-9. Doctor opens patient.
-10. Doctor records medical visit.
-11. Doctor creates prescription.
-12. Visit is completed.
-13. Patient can view appointment/visit information.
-14. AI can provide waiting-time estimation.
-15. Admin can view basic dashboard statistics.
+feat: create ticket API
+feat: add employee queue dashboard
+fix: prevent duplicate ticket numbers
+docs: update SRS
+test: add ticket lifecycle tests
 ```
 
----
+## 17.4 Integration
 
-# 24. Technical Constraints
-
-بسبب طبيعة المشروع ومدة التنفيذ القصيرة، سيتم الالتزام بالقيود التالية:
-
-1. المشروع MVP وليس نظامًا طبيًا تجاريًا كاملًا.
-2. مدة التنفيذ المستهدفة أسبوع واحد.
-3. الفريق مكون من متدربين.
-4. يجب تجنب التقنيات التي تضيف تعقيدًا غير ضروري.
-5. يجب استخدام Architecture بسيطة قابلة للتوسع.
-6. يجب إعطاء الأولوية للـCore Workflow.
-7. AI سيكون محدودًا بوظائف مساندة قابلة للتنفيذ خلال مدة المشروع.
+لا يعتبر عمل الفريق مكتملًا إلا بعد دمج Frontend وBackend وDatabase واختباره كنظام واحد.
 
 ---
 
-# 25. Assumptions
 
-1. النظام مخصص لعيادة واحدة في النسخة الأولى.
-2. المستخدمون لديهم اتصال بالإنترنت.
-3. لكل مستخدم حساب وصلاحيات محددة.
-4. بيانات الطبيب وجدول عمله يتم إدخالها من Admin.
-5. يمكن إضافة خدمات طبية من لوحة الإدارة.
-6. جميع المستخدمين يعملون من خلال Web Browser.
-7. AI يعتمد على خدمة أو نموذج جاهز عند الحاجة، وليس على تدريب نموذج من الصفر.
+# 18. Core User Journey
 
----
-
-# 26. Future Enhancements
-
-بعد الانتهاء من MVP يمكن إضافة:
-
-* Mobile Application.
-* Multiple Clinic Branches.
-* Patient Medical Documents.
-* Laboratory Management.
-* Pharmacy Management.
-* Insurance Management.
-* Online Payment.
-* SMS/Email Integration.
-* Advanced Notifications.
-* Advanced AI Analytics.
-* Multi-language Support.
-* Advanced Medical Reporting.
-
----
-
-# 27. Definition of Done
-
-لا تعتبر أي Feature مكتملة إلا بعد:
+يجب أن يستطيع المستخدم تنفيذ الرحلة الأساسية التالية بنجاح:
 
 ```text
-Requirement Defined
+Open QueueNow
       ↓
-Development Completed
+Select Service
       ↓
-Unit Test / Manual Test
+Take Ticket
       ↓
-Code Review
+Receive Ticket Number
       ↓
-Integration
+View Ticket Status
       ↓
-Acceptance Test
+View People Before Me
       ↓
-Documentation Updated
+View Estimated Waiting Time
+      ↓
+Employee Calls Ticket
+      ↓
+Called
+      ↓
+Start
+      ↓
+Serving
       ↓
 Done
 ```
 
 ---
 
-# 28. Conclusion
+# 19. MVP Acceptance Criteria
 
-QueueNow Clinic MVP هو نظام ويب يركز على أهم العمليات اليومية في العيادة، وأبرزها إدارة المرضى والمواعيد والطوابير والزيارات الطبية.
+يعتبر QueueNow MVP مكتملًا عندما:
 
-تم تصميم نطاق الإصدار الأول بحيث يكون قابلًا للتنفيذ خلال أسبوع بواسطة فريق من المتدربين، مع الحفاظ على بنية برمجية تسمح بإضافة وظائف أكثر تقدمًا مستقبلًا.
+1. يستطيع المراجع الحصول على Ticket.
+2. يحصل المراجع على رقم دور صحيح.
+3. يتم حفظ Ticket في قاعدة البيانات.
+4. يستطيع المراجع مشاهدة حالة Ticket.
+5. يستطيع المراجع معرفة عدد الأشخاص قبله.
+6. يستطيع الموظف مشاهدة Queue.
+7. يستطيع الموظف تنفيذ Next.
+8. يستطيع الموظف تنفيذ Start.
+9. يستطيع الموظف تنفيذ Done.
+10. يستطيع الموظف تنفيذ Skip.
+11. يستطيع الموظف تنفيذ Cancel.
+12. لا يتم حذف Tickets من قاعدة البيانات.
+13. لا يتم إعادة استخدام Ticket Number في نفس اليوم ونفس الخدمة.
+14. تعمل Frontend وBackend وDatabase معًا كنظام واحد.
+15. يعمل Estimated Waiting Time باستخدام Regression Model.
+16. يتم اختبار الـCore Workflow بالكامل.
+17. تكون الأعمال موثقة على GitHub مع Tasks وCommits واضحة.
 
-يعتبر هذا المستند المرجع الأساسي لمرحلة System Design وتخطيط قاعدة البيانات وتصميم API وUI/UX وتقسيم مهام الفريق والاختبارات.
+---
+
+# 20. Future Enhancements
+
+يمكن مستقبلًا إضافة:
+
+* Manager/Admin Dashboard.
+* Authentication متقدم.
+* Multiple Clinics.
+* Multiple Branches.
+* Multiple Services.
+* شاشة عرض عامة للأرقام الحالية.
+* Notifications.
+* SMS / WhatsApp.
+* Mobile Application.
+* Advanced Analytics.
+* Improved Prediction Models.
+* Reports.
+* Priority Queue.
+* Appointment Integration.
+
+---
+
+# 21. Conclusion
+
+QueueNow هو Web Application يركز على إدارة الطوابير وأدوار الانتظار في العيادة.
+
+الـMVP لا يهدف إلى إدارة العيادة طبيًا، وإنما إلى حل مشكلة أساسية ومحددة:
+
+> **تنظيم دور المراجع وتقليل عدم وضوح وقت الانتظار من خلال نظام رقمي لإدارة الـQueue والـTickets.**
+
+يركز الإصدار الأول على ثلاثة عناصر أساسية:
+
+1. **Ticket Management**
+2. **Queue Management**
+3. **Estimated Waiting Time**
+
+ويجب أن تكون جميع مكونات النظام مترابطة وتعمل كنظام كامل قبل اعتبار المشروع مكتملًا.
