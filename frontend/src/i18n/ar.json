@@ -1,0 +1,118 @@
+{
+  "nav": {
+    "home": "الرئيسية",
+    "login": "دخول الموظف",
+    "dashboard": "لوحة التحكم",
+    "logout": "تسجيل الخروج"
+  },
+  "common": {
+    "view": "عرض دوري"
+  },
+  "home": {
+    "openServices": "الخدمات المفتوحة"
+  },
+  "services": {
+    "searchPlaceholder": "ابحث عن خدمة",
+    "peopleWaiting": "بانتظار"
+  },
+  "states": {
+    "loadingServices": "جارٍ تحميل الخدمات…",
+    "emptyServices": "لا توجد خدمات متاحة",
+    "emptyServicesBody": "لا توجد خدمات أسنان متاحة حاليًا.",
+    "genericTitle": "حدث خطأ ما",
+    "genericBody": "تعذر تحميل الطابور. حاول مرة أخرى — لن تظهر رسائل تقنية للمستخدمين.",
+    "WAITING": "انتظار",
+    "DONE": "تم"
+  },
+  "success": {
+    "title": "رقم انتظارك هو {{number}}",
+    "body": "يمكنك الآن متابعة دورك مباشرة."
+  },
+  "errors": {
+    "serviceClosed": "هذه الخدمة مغلقة حاليًا. جرّب خدمة أخرى.",
+    "serviceNotFound": "هذه الخدمة لم تعد متاحة. عد إلى الخدمات.",
+    "createFailed": "تعذر إنشاء التذكرة",
+    "notFound": "لم نتمكن من العثور على هذه التذكرة. عد للرئيسية.",
+    "empty": "لا يوجد مرضى ينتظرون حاليًا.",
+    "busy": "يوجد موظف آخر يتعامل مع التذكرة الحالية. حمّل التالية.",
+    "invalidTransition": "هذا الإجراء غير متاح لهذه التذكرة."
+  },
+  "toast": {
+    "updated": "تم تحديث الطابور",
+    "cancelled": "تم إلغاء التذكرة",
+    "skipped": "تم تخطي التذكرة",
+    "started": "بدأت الخدمة",
+    "done": "اكتملت الخدمة"
+  },
+  "employee": {
+    "number": "الرقم",
+    "service": "الخدمة",
+    "status": "الحالة",
+    "created": "الإنشاء",
+    "action": "الإجراء",
+    "tickets": "تذاكر",
+    "nextAction": "التالي ↑",
+    "waitingTitle": "قائمة الانتظار · الأقدم أولًا",
+    "metricWaiting": "بانتظار",
+    "metricServing": "قيد الخدمة",
+    "metricDone": "تم اليوم",
+    "metricAvg": "متوسط الانتظار",
+    "current": "التذكرة الحالية",
+    "actions": "الإجراءات",
+    "upNext": "التالي",
+    "skipTitle": "تخطي هذه التذكرة؟",
+    "cancelTitle": "إلغاء هذه التذكرة؟",
+    "skipBody": "التذكرة {number} · المريض غير موجود.",
+    "cancelBody": "سيتم إلغاء التذكرة {number} وتبقى محفوظة في السجل.",
+    "skipTicket": "تخطي التذكرة",
+    "cancelTicket": "إلغاء التذكرة",
+    "dashboardRule": "يختار Next أقدم تذكرة WAITING. لا يحصل موظفان على التذكرة نفسها.",
+    "servingNote": "SERVING ← الإجراء الصحيح الوحيد هو Done.",
+    "calledNote": "CALLED ← بدء / تخطي / إلغاء. يظهر Done فقط بعد SERVING.",
+    "emptyTitle": "لا يوجد مرضى ينتظرون",
+    "emptyBody": "ستظهر التذاكر الجديدة هنا تلقائيًا.",
+    "errorTitle": "حدث خطأ ما",
+    "errorBody": "تعذر تحميل الطابور. حاول مرة أخرى.",
+    "refresh": "تحديث",
+    "tryAgain": "حاول مرة أخرى",
+    "loginTitle": "تسجيل دخول المستخدم",
+    "loginName": "الاسم الكامل",
+    "loginPassword": "كلمة المرور",
+    "loginNamePlaceholder": "مثال: سارة أحمد",
+    "loginPasswordPlaceholder": "••••••••••••••",
+    "forgot": "نسيت كلمة المرور",
+    "login": "تسجيل الدخول",
+    "loginHint": "استخدم أي اسم وكلمة مرور في النسخة التجريبية.",
+    "signed": "مسجل الدخول باسم",
+    "account": "د. مساعد",
+    "doctor": "د. مساعد",
+    "historyTitle": "السجل",
+    "historySubtitle": "تبقى التذاكر المكتملة والمتخطاة والملغاة محفوظة.",
+    "noHistory": "لا يوجد سجل بعد",
+    "label": "الموظف",
+    "title": "لوحة التحكم",
+    "waitingNav": "قائمة الانتظار",
+    "currentNav": "التذكرة الحالية",
+    "historyNav": "السجل"
+  },
+  "queue": {
+    "yourNumberShort": "رقمك",
+    "people": "الأشخاص قبلك",
+    "cancel": "إلغاء دوري",
+    "cancelTitle": "إلغاء دورك؟",
+    "cancelBody": "هل أنت متأكد من إلغاء التذكرة {{number}}؟ لا يمكن التراجع عن ذلك.",
+    "waitingMessage": "أنت في الطابور. يرجى البقاء بالقرب من العيادة.",
+    "calledMessage": "تم استدعاؤك. يرجى الاستعداد.",
+    "servingMessage": "الخدمة قيد التنفيذ.",
+    "doneMessage": "اكتملت خدمتك. شكرًا لك!",
+    "cancelledMessage": "تم إلغاء دورك.",
+    "skippedMessage": "تم تخطي هذه التذكرة، وستبقى محفوظة.",
+    "stepWaiting": "انتظار",
+    "stepCalled": "استدعاء",
+    "stepServing": "خدمة",
+    "stepDone": "تم",
+    "nowServing": "قيد الخدمة الآن",
+    "stepSkipped": "متخطاة",
+    "stepCancelled": "ملغاة"
+  }
+}
