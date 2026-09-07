@@ -1,0 +1,4 @@
+import { Home,List,Ticket } from 'lucide-react'
+import { NavLink } from 'react-router-dom'
+import { useLanguage } from '../../../shared/hooks/useLanguage'
+export default function MobileTabBar(){const{t}=useLanguage();const items=[['/',t('nav.home'),Home],['/services',t('nav.services'),List],['/queue',t('nav.myQueue'),Ticket]];return <nav className="fixed inset-x-0 bottom-0 z-40 border-t border-slate-200 bg-white/95 px-4 pb-[max(10px,env(safe-area-inset-bottom))] pt-2 backdrop-blur md:hidden"><div className="mx-auto flex max-w-md items-center justify-around">{items.map(([to,label,Icon])=><NavLink to={to} end={to==='/' } key={to} className={({isActive})=>`flex min-w-20 flex-col items-center gap-1 py-1 text-[11px] ${isActive?'text-brand-600':'text-slate-500'}`}><Icon className="size-5"/><span>{label}</span></NavLink>)}</div></nav>}
