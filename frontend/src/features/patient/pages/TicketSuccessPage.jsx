@@ -1,0 +1,7 @@
+import { CheckCircle2 } from 'lucide-react'
+import { Link,useNavigate,useParams } from 'react-router-dom'
+import PatientShell from './PatientShell'
+import { getTicket } from '../../queue/services/queueService'
+import { useLanguage } from '../../../shared/hooks/useLanguage'
+import Button from '../../../shared/components/Button'
+export default function TicketSuccessPage(){const{ticketId}=useParams();const ticket=getTicket(ticketId);const{t}=useLanguage();const nav=useNavigate();if(!ticket)return <PatientShell><main className="mx-auto max-w-xl px-4 py-12"><div className="rounded-2xl border-2 border-danger-600 bg-danger-50 p-8 text-center"><h1 className="font-bold text-danger-700">{t('errors.notFound')}</h1><Button className="mt-5" onClick={()=>nav('/services')}>{t('common.back')}</Button></div></main></PatientShell>;return <PatientShell><main className="mx-auto grid min-h-[calc(100vh-8rem)] max-w-xl place-items-center px-4 py-12"><section className="w-full rounded-3xl border border-success-300 bg-white px-7 py-10 text-center shadow-sm"><div className="mx-auto grid size-14 place-items-center rounded-full bg-success-50 text-success-600"><CheckCircle2 className="size-9"/></div><h1 className="mt-6 text-xl font-bold text-navy-950">{t('success.title',{number:ticket.number})}</h1><p className="mt-2 text-sm text-slate-500">{t('success.body')}</p><Link to={`/queue/${ticket.id}`} className="mt-6 inline-block"><Button>{t('common.view')}</Button></Link></section></main></PatientShell>}

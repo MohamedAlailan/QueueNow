@@ -1,0 +1,118 @@
+{
+  "nav": {
+    "home": "Home",
+    "login": "Employee Login",
+    "dashboard": "Dashboard",
+    "logout": "Log out"
+  },
+  "common": {
+    "view": "View My Queue"
+  },
+  "home": {
+    "openServices": "Open services"
+  },
+  "services": {
+    "searchPlaceholder": "Search services",
+    "peopleWaiting": "waiting"
+  },
+  "states": {
+    "loadingServices": "Loading services…",
+    "emptyServices": "No services available",
+    "emptyServicesBody": "There are no dental services available right now.",
+    "genericTitle": "Something went wrong",
+    "genericBody": "Unable to load the queue. Please try again — no raw errors shown to users.",
+    "WAITING": "Waiting",
+    "DONE": "Done"
+  },
+  "success": {
+    "title": "Your queue number is {{number}}",
+    "body": "You can now track your position live."
+  },
+  "errors": {
+    "serviceClosed": "This service is closed right now. Try another service.",
+    "serviceNotFound": "This service isn't available anymore. Back to services.",
+    "createFailed": "Couldn't create ticket",
+    "notFound": "We couldn't find this ticket. Back to home.",
+    "empty": "No patients are waiting right now.",
+    "busy": "Another team member is handling the current ticket. Load the next one.",
+    "invalidTransition": "That action isn't available for this ticket."
+  },
+  "toast": {
+    "updated": "Queue updated",
+    "cancelled": "Ticket cancelled",
+    "skipped": "Ticket skipped",
+    "started": "Service started",
+    "done": "Service completed"
+  },
+  "employee": {
+    "number": "Number",
+    "service": "Service",
+    "status": "Status",
+    "created": "Created",
+    "action": "Action",
+    "tickets": "tickets",
+    "nextAction": "next ↑",
+    "waitingTitle": "WAITING QUEUE · OLDEST FIRST",
+    "metricWaiting": "Waiting",
+    "metricServing": "Serving",
+    "metricDone": "Done today",
+    "metricAvg": "Avg wait",
+    "current": "CURRENT TICKET",
+    "actions": "ACTIONS",
+    "upNext": "UP NEXT",
+    "skipTitle": "Skip this ticket?",
+    "cancelTitle": "Cancel this ticket?",
+    "skipBody": "Ticket {number} · patient is not present.",
+    "cancelBody": "Ticket {number} will be cancelled and stay on record.",
+    "skipTicket": "Skip Ticket",
+    "cancelTicket": "Cancel Ticket",
+    "dashboardRule": "Next selects the oldest WAITING ticket. Two employees never get the same ticket.",
+    "servingNote": "SERVING → only Done is valid.",
+    "calledNote": "CALLED → Start / Skip / Cancel. Done is hidden until SERVING.",
+    "emptyTitle": "No patients are waiting",
+    "emptyBody": "New tickets will appear here automatically.",
+    "errorTitle": "Something went wrong",
+    "errorBody": "Unable to load the queue. Please try again — no raw errors shown to users.",
+    "refresh": "Refresh",
+    "tryAgain": "Try Again",
+    "loginTitle": "User Login",
+    "loginName": "Full name",
+    "loginPassword": "Password",
+    "loginNamePlaceholder": "e.g. Sara Ahmad",
+    "loginPasswordPlaceholder": "••••••••••••••",
+    "forgot": "Forgot password",
+    "login": "Log in",
+    "loginHint": "Use any name and password in this demo.",
+    "signed": "Signed in as",
+    "account": "Dr. Assistant",
+    "doctor": "Dr. Assistant",
+    "historyTitle": "History",
+    "historySubtitle": "Completed, skipped, and cancelled tickets stay stored.",
+    "noHistory": "No history yet",
+    "label": "EMPLOYEE",
+    "title": "Dashboard",
+    "waitingNav": "Waiting Queue",
+    "currentNav": "Current Ticket",
+    "historyNav": "History"
+  },
+  "queue": {
+    "yourNumberShort": "YOUR NUMBER",
+    "people": "People before you",
+    "cancel": "Cancel My Queue",
+    "cancelTitle": "Cancel your queue?",
+    "cancelBody": "Are you sure you want to cancel ticket {{number}}? This can’t be undone.",
+    "waitingMessage": "You are in the queue. Please stay nearby.",
+    "calledMessage": "You have been called. Please be ready.",
+    "servingMessage": "Your service is in progress.",
+    "doneMessage": "Your service is complete. Thank you!",
+    "cancelledMessage": "Your queue was cancelled.",
+    "skippedMessage": "This ticket was skipped. It remains stored.",
+    "stepWaiting": "WAITING",
+    "stepCalled": "CALLED",
+    "stepServing": "SERVING",
+    "stepDone": "DONE",
+    "nowServing": "NOW SERVING",
+    "stepSkipped": "SKIPPED",
+    "stepCancelled": "CANCELLED"
+  }
+}
