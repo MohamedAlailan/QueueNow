@@ -25,5 +25,5 @@ def predict(data: PredictionRequest):
             "predicted_waiting_time_minutes": predicted_minutes
         }
     except Exception as e:
-        raise HTTPException(status_code=500, detail=str(e))
+        raise HTTPException(status_code=500, detail="Prediction failed")
 
