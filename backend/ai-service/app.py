@@ -1,29 +1,28 @@
+from typing import Literal
 from fastapi import FastAPI, HTTPException
-from pydantic import BaseModel
-from predict import predict_waiting_time
+from pydantic import BaseModel, ConfigDict, Field
 
-app = FastAPI(title="Waiting Time AI Service", version="1.0")
+app = FastAPI(title="QueueNow Waiting Time", version="2.0")
 
 class PredictionRequest(BaseModel):
-    queue_length_before: int
-    avg_service_time: float
-    available_staff: int
-    previous_waiting_time: float
-    hour: int
-    day_of_week: int
-    service_type: str
+    model_config = ConfigDict(extra="forbid", allow_inf_nan=False)
+    queue_length_before: int = Field(ge=0)
+    avg_service_time: float = Field(gt=0)
+    available_staff: int = Field(ge=1)
+    previous_waiting_time: float = Field(ge=0)
+    hour: int = Field(ge=0, le=23)
+    day_of_week: int = Field(ge=0, le=6)
+    service_type: Literal["consultation", "checkup", "lab_test", "payment"]
+
+@app.get("/health")
+def health():
+    # Liveness only; artifact loading is exercised by /predict.
+    return {"status": "ok"}
 
 @app.post("/predict")
 def predict(data: PredictionRequest):
     try:
-        customer_data = data.model_dump()
-
-        predicted_minutes = predict_waiting_time(customer_data)
-        
-        return {
-            "status": "success",
-            "predicted_waiting_time_minutes": predicted_minutes
-        }
-    except Exception as e:
-        raise HTTPException(status_code=500, detail="Prediction failed")
-
+        from predict import predict_waiting_time
+        return {"predicted_waiting_time_minutes": predict_waiting_time(data.model_dump())}
+    except Exception as error:
+        raise HTTPException(status_code=503, detail="Prediction unavailable") from error

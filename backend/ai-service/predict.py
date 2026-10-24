@@ -10,14 +10,22 @@ Estimated Waiting Time لزبون جديد.
     feature_order_v2.pkl
 """
 
+from pathlib import Path
+from functools import lru_cache
+import math
 import numpy as np
 import tensorflow as tf
 import joblib
 
 # --- تحميل المودل والملفات المرافقة (مرة وحدة بس عند تشغيل السيرفر) ---
-model = tf.keras.models.load_model("waiting_time_model_v2.keras")
-preprocessor = joblib.load("preprocessor_v2.pkl")
-feature_order = joblib.load("feature_order_v2.pkl")
+@lru_cache(maxsize=1)
+def load_artifacts():
+    root = Path(__file__).resolve().parent
+    return (
+        tf.keras.models.load_model(root / "waiting_time_model_v2.keras", compile=False),
+        joblib.load(root / "preprocessor_v2.pkl"),
+        joblib.load(root / "feature_order_v2.pkl"),
+    )
 
 
 def predict_waiting_time(customer_data: dict) -> float:
@@ -30,11 +38,13 @@ def predict_waiting_time(customer_data: dict) -> float:
         available_staff       : عدد الموظفين المتاحين لنفس الخدمة الآن
         previous_waiting_time : وقت انتظار آخر Ticket "Done" لنفس service_id
                                  (= started_at - created_at لتلك التذكرة)
-        hour                  : الساعة الحالية (0-23)
-        day_of_week           : اليوم الحالي (0=اثنين ... 6=أحد)
+        hour                  : ساعة وصول التذكرة (0-23)
+        day_of_week           : يوم وصول التذكرة (0=اثنين ... 6=أحد)
         service_type          : واحدة من:
                                  "consultation", "checkup", "lab_test", "payment"
     """
+
+    model, preprocessor, feature_order = load_artifacts()
 
     # 1. تحويل الساعة واليوم لنفس الترميز الدائري المستخدم أثناء التدريب
     hour = customer_data["hour"]
@@ -74,6 +84,8 @@ def predict_waiting_time(customer_data: dict) -> float:
     prediction = model.predict(x_processed, verbose=0).flatten()[0]
 
     # الوقت لا يمكن أن يكون سالبًا
+    if not math.isfinite(float(prediction)):
+        raise ValueError("Model returned non-finite prediction")
     return max(0.0, float(prediction))
 
 
