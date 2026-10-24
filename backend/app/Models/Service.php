@@ -7,8 +7,9 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class Service extends Model
 {
-    protected $fillable = ['name', 'is_open'];
-    protected $casts = ['is_open' => 'boolean'];
+    protected $fillable = ['name', 'is_open', 'type', 'avg_service_time'];
+
+    protected $casts = ['is_open' => 'boolean', 'avg_service_time' => 'float'];
 
     public function tickets(): HasMany
     {

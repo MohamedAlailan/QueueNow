@@ -7,14 +7,16 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 class Ticket extends Model
 {
+    protected $hidden = ['access_token_hash'];
+
     protected $fillable = ['service_id', 'ticket_number', 'queue_date', 'status'];
 
     protected $casts = [
-        'queue_date'   => 'date',
-        'called_at'    => 'datetime',
-        'started_at'   => 'datetime',
-        'finished_at'  => 'datetime',
-        'skipped_at'   => 'datetime',
+        'queue_date' => 'date',
+        'called_at' => 'datetime',
+        'started_at' => 'datetime',
+        'finished_at' => 'datetime',
+        'skipped_at' => 'datetime',
         'cancelled_at' => 'datetime',
     ];
 
