@@ -13,10 +13,7 @@ function Guard({ children }) {
 }
 function QueueRedirect() {
   const loc = useLocation();
-  let id = null;
-  try {
-    id = JSON.parse(localStorage.getItem("queuenow-state-v4"))?.activeTicketId;
-  } catch { /* empty */ }
+  const id = sessionStorage.getItem("queuenow-active-ticket");
   return id ? (
     <Navigate to={`/queue/${id}`} replace />
   ) : (

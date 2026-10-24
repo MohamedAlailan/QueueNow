@@ -9,76 +9,70 @@ use App\Models\Service;
 
 class ServiceController extends Controller
 {
-    //GET /services
+    // GET /services
     public function index()
     {
-        $services = Service::with([
-            'employees',
-            'tickets' => function ($query) {
-                $query->whereDate('queue_date', now()->toDateString());
-            },
-        ])->get();
+        $services = Service::withCount(['tickets as waiting_count' => fn ($q) => $q->whereDate('queue_date', today())->where('status', 'WAITING')])->get();
+        $services->each(function ($service) {
+            $service->current_ticket_number = $service->tickets()->whereDate('queue_date', today())->whereIn('status', ['CALLED', 'SERVING'])->value('ticket_number');
+        });
 
         return response()->json([
-            'status'  => 200,
+            'status' => 200,
             'message' => 'Services retrieved successfully.',
-            'data'    => $services,
+            'data' => $services,
         ], 200);
     }
 
-    //POST /services
+    // POST /services
     public function store(StoreServiceRequest $request)
     {
         $service = Service::create($request->validated());
+
         return response()->json([
             'message' => 'Service created successfully.',
-            'data'    => $service,
+            'data' => $service,
         ], 201);
     }
 
     // GET /services/{id}
-      // GET /services/{id}
     public function show($id)
     {
-        $service = Service::with([
-            'employees',
-            'tickets' => function ($query) {
-                $query->whereDate('queue_date', now()->toDateString());
-            },
-        ])->find($id);
+        $service = Service::find($id);
 
-        //404
+        // 404
         if (! $service) {
             return response()->json([
-                'status'  => 404,
+                'status' => 404,
                 'message' => 'Service not found.',
-                'data'    => null,
+                'data' => null,
             ], 404);
         }
 
         return response()->json([
-            'status'  => 200,
+            'status' => 200,
             'message' => 'Service retrieved successfully.',
-            'data'    => $service,
+            'data' => $service,
         ], 200);
     }
 
-    //PATCH /services/{id}
+    // PATCH /services/{id}
     public function update(UpdateServiceRequest $request, $id)
     {
         $service = Service::find($id);
         if (! $service) {
             return response()->json([
-                'status'  => 404,
+                'status' => 404,
                 'message' => 'Service not found.',
-                'data'    => null,
+                'data' => null,
             ], 404);
         }
         $service->update($request->validated());
+
         return response()->json([
-            'status'  => 200,
+            'status' => 200,
             'message' => 'Service updated successfully.',
-            'data'    => $service,
+            'data' => $service,
         ], 200);
     }
 }

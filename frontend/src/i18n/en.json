@@ -3,22 +3,49 @@
     "home": "Home",
     "login": "Employee Login",
     "dashboard": "Dashboard",
-    "logout": "Log out"
+    "logout": "Log out",
+    "myQueue": "My Queue",
+    "services": "Services"
   },
   "common": {
-    "view": "View My Queue"
+    "view": "View My Queue",
+    "back": "Back",
+    "closed": "Closed",
+    "confirm": "Confirm",
+    "done": "Done",
+    "keep": "Keep ticket",
+    "open": "Open",
+    "select": "Select service",
+    "skip": "Skip",
+    "start": "Start",
+    "take": "Take a Ticket",
+    "tryAgain": "Try again",
+    "waiting": "Waiting",
+    "called": "Called",
+    "serving": "Serving"
   },
   "home": {
-    "openServices": "Open services"
+    "openServices": "Open services",
+    "available": "Available services",
+    "body": "Choose a service, take a ticket, and follow your queue status.",
+    "counter": "Current tickets by service",
+    "cta": "Browse services",
+    "eyebrow": "QueueNow",
+    "inQueue": "Waiting now",
+    "nowServing": "Now serving",
+    "title": "Your place in line, in real time."
   },
   "services": {
     "searchPlaceholder": "Search services",
-    "peopleWaiting": "waiting"
+    "peopleWaiting": "waiting",
+    "back": "Back to services",
+    "subtitle": "Live availability from the queue system.",
+    "title": "Choose your service"
   },
   "states": {
     "loadingServices": "Loading services…",
     "emptyServices": "No services available",
-    "emptyServicesBody": "There are no dental services available right now.",
+    "emptyServicesBody": "No services are available right now.",
     "genericTitle": "Something went wrong",
     "genericBody": "Unable to load the queue. Please try again — no raw errors shown to users.",
     "WAITING": "Waiting",
@@ -68,21 +95,21 @@
     "cancelTicket": "Cancel Ticket",
     "dashboardRule": "Next selects the oldest WAITING ticket. Two employees never get the same ticket.",
     "servingNote": "SERVING → only Done is valid.",
-    "calledNote": "CALLED → Start / Skip / Cancel. Done is hidden until SERVING.",
+    "calledNote": "CALLED → Start or Skip.",
     "emptyTitle": "No patients are waiting",
     "emptyBody": "New tickets will appear here automatically.",
     "errorTitle": "Something went wrong",
     "errorBody": "Unable to load the queue. Please try again — no raw errors shown to users.",
     "refresh": "Refresh",
     "tryAgain": "Try Again",
-    "loginTitle": "User Login",
+    "loginTitle": "Employee Login",
     "loginName": "Full name",
     "loginPassword": "Password",
     "loginNamePlaceholder": "e.g. Sara Ahmad",
     "loginPasswordPlaceholder": "••••••••••••••",
     "forgot": "Forgot password",
     "login": "Log in",
-    "loginHint": "Use any name and password in this demo.",
+    "loginHint": "Use the email and password provisioned by your administrator.",
     "signed": "Signed in as",
     "account": "Dr. Assistant",
     "doctor": "Dr. Assistant",
@@ -93,7 +120,12 @@
     "title": "Dashboard",
     "waitingNav": "Waiting Queue",
     "currentNav": "Current Ticket",
-    "historyNav": "History"
+    "historyNav": "History",
+    "calledAt": "Called at",
+    "next": "Next Ticket",
+    "serving": "Serving",
+    "startedAt": "Started at",
+    "waited": "Waited"
   },
   "queue": {
     "yourNumberShort": "YOUR NUMBER",
@@ -113,6 +145,19 @@
     "stepDone": "DONE",
     "nowServing": "NOW SERVING",
     "stepSkipped": "SKIPPED",
-    "stepCancelled": "CANCELLED"
+    "stepCancelled": "CANCELLED",
+    "estimatedWait": "Estimated wait",
+    "unavailable": "Unavailable",
+    "aiEstimate": "AI estimate",
+    "approximate": "Approximate"
+  },
+  "confirm": {
+    "back": "Back to services",
+    "body": "Your ticket will be issued by the queue server.",
+    "creating": "Creating…",
+    "currently": "Currently serving",
+    "note": "Keep this browser tab to track and manage your ticket.",
+    "people": "Waiting now",
+    "ready": "Ready to join?"
   }
 }
