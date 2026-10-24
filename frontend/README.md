@@ -1,16 +1,23 @@
-# React + Vite
+# QueueNow React frontend
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+React + Vite client for the Laravel queue API. The service catalog, ticket numbers,
+status, queue and employee history come from Laravel. No mock queue or localStorage
+authentication is used. Patient status/employee queues poll every five seconds.
 
-Currently, two official plugins are available:
+```sh
+npm ci
+cp .env.example .env
+npm run dev
+```
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+Run Laravel on 127.0.0.1:8000; Vite proxies `/api`. Open localhost:5173. Provision
+real employee credentials using the Laravel command documented in
+[Integration and operations](../docs/INTEGRATION.md). Employee sessions and patient
+access capabilities use sessionStorage; clearing it ends access in that tab.
 
-## React Compiler
+`npm run lint` checks sources; `npm run build` writes `dist/`. Deploy with SPA
+fallback and a same-origin `/api` reverse proxy, or explicitly configure the API
+origin and CORS. `npm run preview` does not proxy API calls.
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
-
-## Expanding the ESLint configuration
-
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+See [Integration and operations](../docs/INTEGRATION.md) for API responses,
+transitions, database migrations, AI configuration and verification steps.
