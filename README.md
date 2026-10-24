@@ -121,3 +121,10 @@ Each team member is expected to:
 ## Team
 
 **QueueNow Project Team**
+
+## Integrated application
+
+See [Integration and operations](docs/INTEGRATION.md) for the current React ↔
+Laravel ↔ FastAPI setup, real employee login, API contract, AI feature sources,
+migration notes and tests. Older planning/status notes are not a substitute for
+these integration instructions.
