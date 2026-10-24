@@ -13,11 +13,9 @@ export default function ServiceCard({ service }) {
           </span>
           <div className="min-w-0">
             <h3 className="text-base font-bold text-navy-950">
-              {t(`serviceNames.${service.nameKey}`)}
+              {service.name}
             </h3>
-            <p className="mt-1 text-sm text-slate-500">
-              {t(`serviceDescriptions.${service.descriptionKey}`)}
-            </p>
+            <p className="mt-1 text-sm text-slate-500">{service.type || ""}</p>
           </div>
         </div>
         <span
@@ -37,7 +35,7 @@ export default function ServiceCard({ service }) {
           {service.waiting} {t("services.peopleWaiting")}
         </span>
         <span className="inline-flex items-center gap-1.5">
-          <Clock3 className="size-3.5" />~{service.duration}m
+          <Clock3 className="size-3.5" />~{service.duration ?? "—"}m
         </span>
       </div>
       <Link
