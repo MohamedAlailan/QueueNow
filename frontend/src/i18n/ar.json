@@ -3,22 +3,49 @@
     "home": "الرئيسية",
     "login": "دخول الموظف",
     "dashboard": "لوحة التحكم",
-    "logout": "تسجيل الخروج"
+    "logout": "تسجيل الخروج",
+    "myQueue": "دوري",
+    "services": "الخدمات"
   },
   "common": {
-    "view": "عرض دوري"
+    "view": "عرض دوري",
+    "back": "رجوع",
+    "closed": "مغلقة",
+    "confirm": "تأكيد",
+    "done": "إنهاء",
+    "keep": "الاحتفاظ بالتذكرة",
+    "open": "مفتوحة",
+    "select": "اختيار الخدمة",
+    "skip": "تخطي",
+    "start": "بدء",
+    "take": "أخذ تذكرة",
+    "tryAgain": "إعادة المحاولة",
+    "waiting": "بانتظار الدور",
+    "called": "تم الاستدعاء",
+    "serving": "قيد الخدمة"
   },
   "home": {
-    "openServices": "الخدمات المفتوحة"
+    "openServices": "الخدمات المفتوحة",
+    "available": "الخدمات المتاحة",
+    "body": "اختر خدمة واحصل على تذكرة وتابع حالة دورك.",
+    "counter": "التذاكر الحالية حسب الخدمة",
+    "cta": "تصفح الخدمات",
+    "eyebrow": "QueueNow",
+    "inQueue": "بانتظار الخدمة",
+    "nowServing": "قيد الخدمة الآن",
+    "title": "تابع دورك لحظة بلحظة."
   },
   "services": {
     "searchPlaceholder": "ابحث عن خدمة",
-    "peopleWaiting": "بانتظار"
+    "peopleWaiting": "بانتظار",
+    "back": "العودة للخدمات",
+    "subtitle": "حالة الخدمات مباشرة من نظام الطابور.",
+    "title": "اختر خدمتك"
   },
   "states": {
     "loadingServices": "جارٍ تحميل الخدمات…",
     "emptyServices": "لا توجد خدمات متاحة",
-    "emptyServicesBody": "لا توجد خدمات أسنان متاحة حاليًا.",
+    "emptyServicesBody": "لا توجد خدمات متاحة حالياً.",
     "genericTitle": "حدث خطأ ما",
     "genericBody": "تعذر تحميل الطابور. حاول مرة أخرى — لن تظهر رسائل تقنية للمستخدمين.",
     "WAITING": "انتظار",
@@ -68,21 +95,21 @@
     "cancelTicket": "إلغاء التذكرة",
     "dashboardRule": "يختار Next أقدم تذكرة WAITING. لا يحصل موظفان على التذكرة نفسها.",
     "servingNote": "SERVING ← الإجراء الصحيح الوحيد هو Done.",
-    "calledNote": "CALLED ← بدء / تخطي / إلغاء. يظهر Done فقط بعد SERVING.",
+    "calledNote": "بعد الاستدعاء: بدء الخدمة أو التخطي.",
     "emptyTitle": "لا يوجد مرضى ينتظرون",
     "emptyBody": "ستظهر التذاكر الجديدة هنا تلقائيًا.",
     "errorTitle": "حدث خطأ ما",
     "errorBody": "تعذر تحميل الطابور. حاول مرة أخرى.",
     "refresh": "تحديث",
     "tryAgain": "حاول مرة أخرى",
-    "loginTitle": "تسجيل دخول المستخدم",
+    "loginTitle": "دخول الموظف",
     "loginName": "الاسم الكامل",
     "loginPassword": "كلمة المرور",
     "loginNamePlaceholder": "مثال: سارة أحمد",
     "loginPasswordPlaceholder": "••••••••••••••",
     "forgot": "نسيت كلمة المرور",
     "login": "تسجيل الدخول",
-    "loginHint": "استخدم أي اسم وكلمة مرور في النسخة التجريبية.",
+    "loginHint": "استخدم البريد وكلمة المرور المخصصين من المسؤول.",
     "signed": "مسجل الدخول باسم",
     "account": "د. مساعد",
     "doctor": "د. مساعد",
@@ -93,7 +120,12 @@
     "title": "لوحة التحكم",
     "waitingNav": "قائمة الانتظار",
     "currentNav": "التذكرة الحالية",
-    "historyNav": "السجل"
+    "historyNav": "السجل",
+    "calledAt": "وقت الاستدعاء",
+    "next": "التذكرة التالية",
+    "serving": "قيد الخدمة",
+    "startedAt": "وقت البدء",
+    "waited": "مدة الانتظار"
   },
   "queue": {
     "yourNumberShort": "رقمك",
@@ -113,6 +145,19 @@
     "stepDone": "تم",
     "nowServing": "قيد الخدمة الآن",
     "stepSkipped": "متخطاة",
-    "stepCancelled": "ملغاة"
+    "stepCancelled": "ملغاة",
+    "estimatedWait": "الانتظار المتوقع",
+    "unavailable": "غير متاح",
+    "aiEstimate": "تقدير بالذكاء الاصطناعي",
+    "approximate": "تقدير تقريبي"
+  },
+  "confirm": {
+    "back": "العودة للخدمات",
+    "body": "سيصدر نظام الطابور تذكرتك.",
+    "creating": "جارٍ الإصدار…",
+    "currently": "قيد الخدمة الآن",
+    "note": "احتفظ بتبويب المتصفح لمتابعة تذكرتك وإدارتها.",
+    "people": "بانتظار الخدمة",
+    "ready": "جاهز للانضمام؟"
   }
 }
